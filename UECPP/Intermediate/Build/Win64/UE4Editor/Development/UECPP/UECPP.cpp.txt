@@ -1,0 +1,2 @@
+C:\Users\user\Desktop\UECPP\Intermediate\Build\Win64\UE4Editor\Development\UECPP\Definitions.UECPP.h
+C:\Users\user\Desktop\UECPP\Source\UECPP\UECPP.h

@@ -1,0 +1,5 @@
+C:\Users\user\Desktop\UECPP\Intermediate\Build\Win64\UE4Editor\Development\UECPP\Definitions.UECPP.h
+D:\Unreal\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+D:\Unreal\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+C:\Users\user\Desktop\UECPP\Source\UECPP/01_Spawn/C01_Property.h
+C:\Users\user\Desktop\UECPP\Intermediate\Build\Win64\UE4Editor\Inc\UECPP\C01_Property.generated.h

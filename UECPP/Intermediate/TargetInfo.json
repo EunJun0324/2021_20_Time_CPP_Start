@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "UECPP",
+			"Path": "C:\\Users\\user\\Desktop\\UECPP\\Source\\UECPP.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "UECPPEditor",
+			"Path": "C:\\Users\\user\\Desktop\\UECPP\\Source\\UECPPEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
