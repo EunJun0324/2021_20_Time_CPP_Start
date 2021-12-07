@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "UE_CPP",
+			"Path": "C:\\Users\\user\\Desktop\\UE_CPP\\UE_CPP\\Source\\UE_CPP.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "UE_CPPEditor",
+			"Path": "C:\\Users\\user\\Desktop\\UE_CPP\\UE_CPP\\Source\\UE_CPPEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
