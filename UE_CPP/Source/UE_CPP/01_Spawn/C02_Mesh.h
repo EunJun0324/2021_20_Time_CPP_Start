@@ -15,7 +15,6 @@ protected :
 
 	UPROPERTY(VisibleDefaultsOnly)
 		class UStaticMeshComponent* Mesh;
-
 private:
 	class UMaterialInstanceDynamic* Material;
 

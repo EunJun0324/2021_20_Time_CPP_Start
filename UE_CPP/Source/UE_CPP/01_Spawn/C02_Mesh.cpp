@@ -9,7 +9,6 @@
 AC02_Mesh::AC02_Mesh()
 {
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
-
 	// ConstructorHelpers::FObjectFinder<UStaticMesh> mesh(L"StaticMesh'/Game/Mesh/SM_Cube.SM_Cube'");
 	// if (mesh.Succeeded()) Mesh->SetStaticMesh(mesh.Object);
 
