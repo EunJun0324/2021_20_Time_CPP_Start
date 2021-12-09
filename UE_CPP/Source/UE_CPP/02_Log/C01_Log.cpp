@@ -3,7 +3,6 @@
 
 AC01_Log::AC01_Log()
 {
-
 }
 
 void AC01_Log::BeginPlay()
@@ -17,6 +16,5 @@ void AC01_Log::BeginPlay()
 	CLog::Log(GetActorRotation());
 	CLog::Log(this);
 	CLog::Log(__FILE__, __FUNCTION__ , __LINE__);
-
 }
 

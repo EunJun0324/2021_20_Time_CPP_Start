@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\UE_CPP.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{1290075E-63E1-4BF2-9417-290556CA5716}</UniqueIdentifier>
+      <UniqueIdentifier>{0440C15D-A85F-46C3-B898-39BAB5F4B305}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UE_CPP.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{7FF4DF1C-3B16-48A7-B350-87D7B168DFF4}</UniqueIdentifier>
+      <UniqueIdentifier>{AC7F8D77-14A9-4CAF-9864-EBB74CB6A0A2}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -24,7 +24,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\UE_CPP">
-      <UniqueIdentifier>{674FB361-CBBE-4E8B-9FE3-CFCD85278DBA}</UniqueIdentifier>
+      <UniqueIdentifier>{D6122235-BA34-4C99-B60A-BE50C7BD7AAD}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UE_CPP\UE_CPP.Build.cs">
       <Filter>Source\UE_CPP</Filter>
@@ -42,7 +42,7 @@
       <Filter>Source\UE_CPP</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\01_Spawn">
-      <UniqueIdentifier>{8F20B1DD-7405-4951-8D2D-82BDB04634BB}</UniqueIdentifier>
+      <UniqueIdentifier>{A0109831-CA0A-40BB-8F54-477451C99AB7}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\01_Spawn\C01_Spawn.cpp">
       <Filter>Source\UE_CPP\01_Spawn</Filter>
@@ -63,7 +63,7 @@
       <Filter>Source\UE_CPP\01_Spawn</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\02_Log">
-      <UniqueIdentifier>{B3E4CD14-9755-4ED7-95CF-2C98A567E8A1}</UniqueIdentifier>
+      <UniqueIdentifier>{D58DAFA4-F395-430D-B179-28FE164952AB}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\02_Log\C01_Log.cpp">
       <Filter>Source\UE_CPP\02_Log</Filter>
@@ -71,8 +71,17 @@
     <ClInclude Include="..\..\Source\UE_CPP\02_Log\C01_Log.h">
       <Filter>Source\UE_CPP\02_Log</Filter>
     </ClInclude>
+    <Filter Include="Source\UE_CPP\03_Collision">
+      <UniqueIdentifier>{E22932CA-B1E6-41A6-BDF6-99FD31D6E6F6}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C01_BeginOverlap.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C01_BeginOverlap.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
     <Filter Include="Source\UE_CPP\Utilities">
-      <UniqueIdentifier>{16DA2981-E942-44C0-89E1-0E6703E15426}</UniqueIdentifier>
+      <UniqueIdentifier>{95022E2F-E61B-40F4-AC9D-1A9995A11B6A}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\UE_CPP\Utilities\CHelpers.h">
       <Filter>Source\UE_CPP\Utilities</Filter>
