@@ -31,7 +31,6 @@ void AC01_BeginOverlap::BeginPlay()
 	OnActorBeginOverlap.AddDynamic(this, &AC01_BeginOverlap::OnBeginOverlap);
 	OnActorBeginOverlap.AddDynamic(this, &AC01_BeginOverlap::OnBeginOverlap2);
 	OnActorEndOverlap.AddDynamic(this, &AC01_BeginOverlap::OnEndOverlap);
-
 }
 
 void AC01_BeginOverlap::OnBeginOverlap(AActor* OverlapedActor, AActor* OtherActor)

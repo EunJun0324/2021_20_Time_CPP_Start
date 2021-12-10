@@ -12,5 +12,6 @@ public class UE_CPP : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
+		PublicIncludePaths.Add(ModuleDirectory);
 	}
 }
