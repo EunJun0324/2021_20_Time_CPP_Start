@@ -1,4 +1,5 @@
 #include "03_Collision/C04_Light.h"
+#include "C05_Trigger.h"
 #include "../Utilities/CHelpers.h"
 #include "Components/BoxComponent.h"
 #include "Components/TextRenderComponent.h"
@@ -37,7 +38,38 @@ void AC04_Light::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	PointLight->SetVisibility(true);
+	PointLight->SetVisibility(false);
+	PointLight2->SetVisibility(false);
+
+	TArray<AActor*> actors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AC05_Trigger::StaticClass(), actors);
+
+	AC05_Trigger* trigger = nullptr;
+
+	if (actors[0])
+	{
+		trigger = Cast<AC05_Trigger>(actors[0]);
+		trigger->OnBoxLightBeginOverlap.BindUFunction(this, "OnLight");
+		trigger->OnBoxLightEndOverlap.BindUFunction(this,   "OffLight");
+		trigger->OnBoxLightColorOverlap.BindUFunction(this, "OnRandomLight");
+	}
+}
+
+void AC04_Light::OnLight()
+{ PointLight->SetVisibility(true); }
+
+void AC04_Light::OffLight()
+{
+	PointLight->SetVisibility(false);
+	PointLight2->SetVisibility(false);
+}
+
+FString AC04_Light::OnRandomLight(FLinearColor InColor)
+{
+	PointLight2->SetVisibility(true);
+	PointLight2->SetLightColor(InColor);
+
+	return InColor.ToString();
 }
 
 
