@@ -1,9 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "C01_Praticle.generated.h"
 
 UCLASS()
@@ -15,10 +14,17 @@ private :
 	UPROPERTY(EditAnywhere)
 		class UParticleSystemComponent* Particle;
 
+private :
+	 UPROPERTY(EditAnywhere)
+	 	TEnumAsByte<EDrawDebugTrace::Type> DrawDebugType;
+
 public:	
 	AC01_Praticle();
 
 protected:
 	virtual void BeginPlay() override;
 
+public :
+	UFUNCTION()
+	void ActorBeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
 };
