@@ -13,7 +13,7 @@ AC02_Cylinder::AC02_Cylinder()
 	UStaticMesh* mesh;
 	CHelpers::GetAsset<UStaticMesh>(&mesh, "StaticMesh'/Game/Mesh/SM_Cylinder.SM_Cylinder'");
 	Mesh->SetStaticMesh(mesh);
-
+	Mesh->SetRelativeScale3D(FVector(1, 1, 2.5f));
 
 	Text->SetRelativeLocation(FVector(0, 0, 100));
 	Text->SetRelativeRotation(FRotator(0, 180, 0));

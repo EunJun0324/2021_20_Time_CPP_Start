@@ -4,6 +4,8 @@
 #include "GameFramework/Actor.h"
 #include "C01_LineTrace.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FLineTraceResult, class AActor*, InActor, FLinearColor, InColor);
+
 UCLASS()
 class UE_CPP_API AC01_LineTrace : public AActor
 {
@@ -25,4 +27,15 @@ protected:
 public:	
 	virtual void Tick(float DeltaTime) override;
 
+
+private :
+	UFUNCTION()
+		void StartJump(class AActor* InActor, FLinearColor InColor);
+
+private :
+	UPROPERTY(BlueprintAssignable)
+	FLineTraceResult OnLineTraceResult;
+
+private :
+	TArray<class AC02_Cylinder*> Cylinders;
 };
