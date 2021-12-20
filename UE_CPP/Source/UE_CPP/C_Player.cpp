@@ -28,6 +28,11 @@ AC_Player::AC_Player()
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
 
+	TSubclassOf<UAnimInstance> animInstance;
+	CHelpers::GetClass<UAnimInstance>(&animInstance, "AnimBlueprint'/Game/Player/BP_CAnimInstance.BP_CAnimInstance_C'");
+	GetMesh()->SetAnimInstanceClass(animInstance);
+
+
 	SpringArm->SetRelativeLocation(FVector(0, 0, 60));
 	SpringArm->TargetArmLength = 200;
 	SpringArm->bUsePawnControlRotation = true;
@@ -52,7 +57,12 @@ void AC_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AC_Player::OnMoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AC_Player::OnMoveRight);
+	PlayerInputComponent->BindAxis("HorizontalLook", this, &AC_Player::OnHorizontalLook);
+	PlayerInputComponent->BindAxis("VerticalLook", this, &AC_Player::OnVerticalLook);
+	PlayerInputComponent->BindAxis("Zoom", this, &AC_Player::OnZoom);
 
+	PlayerInputComponent->BindAction("Run",  EInputEvent::IE_Pressed, this, &AC_Player::OnRun);
+	PlayerInputComponent->BindAction("Run",  EInputEvent::IE_Released, this, &AC_Player::OffRun);
 
 }
 
@@ -71,4 +81,22 @@ void AC_Player::OnMoveRight(float AxisValue)
 
 	AddMovementInput(direction, AxisValue);
 }
+
+void AC_Player::OnHorizontalLook(float AxisValue)
+{ AddControllerYawInput(AxisValue); }
+
+void AC_Player::OnVerticalLook(float AxisValue)
+{ AddControllerPitchInput(AxisValue); }
+
+void AC_Player::OnZoom(float AxisValue)
+{
+	SpringArm->TargetArmLength += (ZoomSpeed * AxisValue * GetWorld()->GetDeltaSeconds());
+	SpringArm->TargetArmLength = FMath::Clamp(SpringArm->TargetArmLength, ZoomRange.X, ZoomRange.Y);
+}
+
+void AC_Player::OnRun()
+{ GetCharacterMovement()->MaxWalkSpeed = 600; }
+
+void AC_Player::OffRun()
+{ GetCharacterMovement()->MaxWalkSpeed = 400; }
 
