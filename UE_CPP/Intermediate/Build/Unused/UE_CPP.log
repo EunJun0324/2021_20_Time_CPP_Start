@@ -1,0 +1,5 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\user\Desktop\UE_CPP).
+  Parsing headers for UE_CPPEditor
+    Running UnrealHeaderTool "C:\Users\user\Desktop\UE_CPP\UE_CPP\UE_CPP.uproject" "C:\Users\user\Desktop\UE_CPP\UE_CPP\Intermediate\Build\Win64\UE_CPPEditor\Development\UE_CPPEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\user\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+  C:/Users/user/Desktop/UE_CPP/UE_CPP/Source/UE_CPP/07_TPS/C_Rifle.h(26) : LogCompile: Error: Unknown variable specifier 'VisibleDefulutsOnly'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.MakeFile.Targets(45,5): error MSB3073: ""C:\Program Files\Epic Games\UE_4.26\Engine\Build\BatchFiles\Build.bat" UE_CPPEditor Win64 Development -Project="C:\Users\user\Desktop\UE_CPP\UE_CPP\UE_CPP.uproject" -WaitMutex -FromMsBuild" 명령이 종료되었습니다(코드: 6).

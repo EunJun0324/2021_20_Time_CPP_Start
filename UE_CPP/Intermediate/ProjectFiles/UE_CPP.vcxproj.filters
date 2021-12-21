@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\UE_CPP.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{7B00CDAB-0D3B-4D96-8B71-DEA7793321DD}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\UE_CPP.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\UE_CPPEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{C90A4904-0A7E-4A33-A511-1F8EB34E5222}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\UE_CPP">
+      <UniqueIdentifier>{B6E54C9F-F1C7-4F66-BFAC-612E05C8F681}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\C_AnimInstance.cpp">
+      <Filter>Source\UE_CPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\C_AnimInstance.h">
+      <Filter>Source\UE_CPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\C_Player.cpp">
+      <Filter>Source\UE_CPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\C_Player.h">
+      <Filter>Source\UE_CPP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UE_CPP\Global.h">
+      <Filter>Source\UE_CPP</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\UE_CPP\UE_CPP.Build.cs">
+      <Filter>Source\UE_CPP</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\UE_CPP\UE_CPP.cpp">
+      <Filter>Source\UE_CPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\UE_CPP.h">
+      <Filter>Source\UE_CPP</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\UE_CPPGameModeBase.cpp">
+      <Filter>Source\UE_CPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\UE_CPPGameModeBase.h">
+      <Filter>Source\UE_CPP</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\01_Spawn">
+      <UniqueIdentifier>{84FADFE3-8C2F-4649-AED6-67FADCF9980D}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\01_Spawn\C01_Spawn.cpp">
+      <Filter>Source\UE_CPP\01_Spawn</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\01_Spawn\C01_Spawn.h">
+      <Filter>Source\UE_CPP\01_Spawn</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\01_Spawn\C02_Mesh.cpp">
+      <Filter>Source\UE_CPP\01_Spawn</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\01_Spawn\C02_Mesh.h">
+      <Filter>Source\UE_CPP\01_Spawn</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\01_Spawn\C03_Spawner.cpp">
+      <Filter>Source\UE_CPP\01_Spawn</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\01_Spawn\C03_Spawner.h">
+      <Filter>Source\UE_CPP\01_Spawn</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\02_Log">
+      <UniqueIdentifier>{48C9F29C-43A2-4F26-A38D-BE3BABC547D2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\02_Log\C01_Log.cpp">
+      <Filter>Source\UE_CPP\02_Log</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\02_Log\C01_Log.h">
+      <Filter>Source\UE_CPP\02_Log</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\03_Collision">
+      <UniqueIdentifier>{F2B255D6-F0F0-477E-BB5D-CECB6ED532C8}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C01_BeginOverlap.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C01_BeginOverlap.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C02_ComponentOverlap.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C02_ComponentOverlap.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C03_OverlapAndHit.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C03_OverlapAndHit.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C04_Light.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C04_Light.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C05_Trigger.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C05_Trigger.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C06_MultiTrigger.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C06_MultiTrigger.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C07_Box.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C07_Box.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C08_SpotLight.cpp">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\03_Collision\C08_SpotLight.h">
+      <Filter>Source\UE_CPP\03_Collision</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\04_Particle">
+      <UniqueIdentifier>{BD64BF88-1155-499C-899E-A6BCB4481562}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\04_Particle\C01_Praticle.cpp">
+      <Filter>Source\UE_CPP\04_Particle</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\04_Particle\C01_Praticle.h">
+      <Filter>Source\UE_CPP\04_Particle</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\04_Particle\C02_ParticleTrigger.cpp">
+      <Filter>Source\UE_CPP\04_Particle</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\04_Particle\C02_ParticleTrigger.h">
+      <Filter>Source\UE_CPP\04_Particle</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\05_LineTrace">
+      <UniqueIdentifier>{BEE7EEED-70A9-4A18-945A-34B5B1FC3EEB}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\05_LineTrace\C01_LineTrace.cpp">
+      <Filter>Source\UE_CPP\05_LineTrace</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\05_LineTrace\C01_LineTrace.h">
+      <Filter>Source\UE_CPP\05_LineTrace</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\05_LineTrace\C02_Cylinder.cpp">
+      <Filter>Source\UE_CPP\05_LineTrace</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\05_LineTrace\C02_Cylinder.h">
+      <Filter>Source\UE_CPP\05_LineTrace</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\06_Sound">
+      <UniqueIdentifier>{C3731014-6242-415D-B9FA-72FCA74F26E6}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\06_Sound\C01_Sound2D.cpp">
+      <Filter>Source\UE_CPP\06_Sound</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\06_Sound\C01_Sound2D.h">
+      <Filter>Source\UE_CPP\06_Sound</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\06_Sound\C02_Sound3D.cpp">
+      <Filter>Source\UE_CPP\06_Sound</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\06_Sound\C02_Sound3D.h">
+      <Filter>Source\UE_CPP\06_Sound</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\07_TPS">
+      <UniqueIdentifier>{1B48D38E-E49A-4107-9107-AF4A8E489D86}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\07_TPS\C_Bullet.cpp">
+      <Filter>Source\UE_CPP\07_TPS</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\07_TPS\C_Bullet.h">
+      <Filter>Source\UE_CPP\07_TPS</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\07_TPS\C_Rifle.cpp">
+      <Filter>Source\UE_CPP\07_TPS</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\07_TPS\C_Rifle.h">
+      <Filter>Source\UE_CPP\07_TPS</Filter>
+    </ClInclude>
+    <Filter Include="Source\UE_CPP\Utilities">
+      <UniqueIdentifier>{7DAF06E7-15DC-429A-A9F6-88F8125D92E4}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\UE_CPP\Utilities\CHelpers.h">
+      <Filter>Source\UE_CPP\Utilities</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UE_CPP\Utilities\CLog.cpp">
+      <Filter>Source\UE_CPP\Utilities</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\Utilities\CLog.h">
+      <Filter>Source\UE_CPP\Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
