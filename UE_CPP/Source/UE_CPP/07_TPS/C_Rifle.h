@@ -23,7 +23,7 @@ private :
 		class UAnimMontage* UngrabMontage;
 
 private :
-	UPROPERTY(VisibleDefulutsOnly)
+	UPROPERTY(VisibleDefaultsOnly)
 		class USkeletalMeshComponent* Mesh;
 
 public:	
@@ -36,7 +36,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public :
-	AC_Rifle* Spawn(class UWorld* InWorld, class ACharacter* InOwnerCharacter);
+	static AC_Rifle* Spawn(class UWorld* InWorld, class ACharacter* InOwnerCharacter);
 
 public :
 	void Equip();
@@ -46,6 +46,9 @@ public :
 	void UnEquip();
 	void Begin_UnEquip();
 	void End_UnEquip();
+
+public :
+	FORCEINLINE bool GetEquipped() { return bEquipped; }
 
 private :
 	class ACharacter* OwnerCharacter;

@@ -14,11 +14,11 @@ AC_Rifle::AC_Rifle()
 	CHelpers::CreateComponent<USkeletalMeshComponent>(this, &Mesh, "Mesh");
 
 	USkeletalMesh* mesh;
-	CHelpers::GetAsset<USkeletalMesh>(&mesh, "");
+	CHelpers::GetAsset<USkeletalMesh>(&mesh, "SkeletalMesh'/Game/Weapons/Meshes/SK_AR4.SK_AR4'");
 	Mesh->SetSkeletalMesh(mesh);
 
-	CHelpers::GetAsset<UAnimMontage>(&GrabMontage, "");
-	CHelpers::GetAsset<UAnimMontage>(&UngrabMontage, "");
+	CHelpers::GetAsset<UAnimMontage>(&GrabMontage, "AnimMontage'/Game/Character/Montages/Rifle_Grab_Montage.Rifle_Grab_Montage'");
+	CHelpers::GetAsset<UAnimMontage>(&UngrabMontage, "AnimMontage'/Game/Character/Montages/Rifle_UnGrab_Montage.Rifle_UnGrab_Montage'");
 }
 
 void AC_Rifle::BeginPlay()
@@ -38,7 +38,10 @@ void AC_Rifle::Tick(float DeltaTime)
 
 AC_Rifle* AC_Rifle::Spawn(UWorld* InWorld, ACharacter* InOwnerCharacter)
 {
-	return nullptr;
+	FActorSpawnParameters params;
+	params.Owner = InOwnerCharacter;
+
+	return InWorld->SpawnActor<AC_Rifle>(params);
 }
 
 void AC_Rifle::Equip()
@@ -52,7 +55,7 @@ void AC_Rifle::Equip()
 		return;
 	}
 
-	OwnerCharacter->PlayAnimMontage(GrabMontage);
+	OwnerCharacter->PlayAnimMontage(GrabMontage, 2);
 }
 
 void AC_Rifle::Begin_Equip()
@@ -66,10 +69,13 @@ void AC_Rifle::End_Equip()
 { bEquipping = false; }
 
 void AC_Rifle::UnEquip()
-{ OwnerCharacter->PlayAnimMontage(UngrabMontage); }
+{ OwnerCharacter->PlayAnimMontage(UngrabMontage, 2); }
 
 void AC_Rifle::Begin_UnEquip()
-{ bEquipped = false; }
+{ 
+	AttachToComponent(OwnerCharacter->GetMesh(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, true), HolsterSocket);
+	bEquipped = false; 
+}
 
 void AC_Rifle::End_UnEquip()
 { bEquipping = false; }

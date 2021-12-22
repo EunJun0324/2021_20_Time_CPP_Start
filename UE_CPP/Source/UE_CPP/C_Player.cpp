@@ -1,13 +1,19 @@
 #include "C_Player.h"
 #include "Global.h"
+
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/ArrowComponent.h"
+
 #include "Camera/CameraComponent.h"
+
 #include "Materials/MaterialInstanceDynamic.h"
+
+#include "07_TPS/C_Rifle.h"
 
 
 AC_Player::AC_Player()
@@ -43,6 +49,8 @@ void AC_Player::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	Rifle = AC_Rifle::Spawn(GetWorld(), this);
+
 }
 
 void AC_Player::Tick(float DeltaTime)
@@ -63,7 +71,7 @@ void AC_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAction("Run",  EInputEvent::IE_Pressed, this, &AC_Player::OnRun);
 	PlayerInputComponent->BindAction("Run",  EInputEvent::IE_Released, this, &AC_Player::OffRun);
-
+	PlayerInputComponent->BindAction("Rifle", EInputEvent::IE_Pressed, this, &AC_Player::OnRifle_Equip);
 }
 
 void AC_Player::OnMoveForward(float AxisValue)
@@ -99,4 +107,34 @@ void AC_Player::OnRun()
 
 void AC_Player::OffRun()
 { GetCharacterMovement()->MaxWalkSpeed = 400; }
+
+void AC_Player::OnRifle_Equip()
+{ Rifle->Equip(); }
+
+void AC_Player::Begin_Equip_Rifle()
+{
+	Rifle->Begin_Equip();
+}
+
+void AC_Player::End_Equip_Rifle()
+{
+	Rifle->End_Equip();
+}
+
+void AC_Player::Begin_UnEquip_Rifle()
+{
+	Rifle->Begin_UnEquip();
+}
+
+void AC_Player::End_UnEquip_Rifle()
+{
+	Rifle->End_UnEquip();
+}
+
+bool AC_Player::Get_Equip_Rifle()
+{
+	return Rifle->GetEquipped();
+}
+
+
 

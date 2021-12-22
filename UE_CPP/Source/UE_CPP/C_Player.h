@@ -2,10 +2,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "07_TPS/IRifle.h"
 #include "C_Player.generated.h"
 
 UCLASS()
-class UE_CPP_API AC_Player : public ACharacter
+class UE_CPP_API AC_Player : public ACharacter , public IIRifle
 {
 	GENERATED_BODY()
 
@@ -22,6 +23,9 @@ private :
 
 	UPROPERTY(VisibleDefaultsOnly)
 		class UCameraComponent*	   Camera;
+
+private :
+	class AC_Rifle* Rifle;
 
 public:
 	AC_Player();
@@ -42,4 +46,12 @@ private :
 
 	void OnRun();
 	void OffRun();
+
+	void OnRifle_Equip();
+
+	virtual void Begin_Equip_Rifle() override;
+	virtual void End_Equip_Rifle() override;
+	virtual void Begin_UnEquip_Rifle() override;
+	virtual void End_UnEquip_Rifle() override;
+	virtual bool Get_Equip_Rifle() override;
 };

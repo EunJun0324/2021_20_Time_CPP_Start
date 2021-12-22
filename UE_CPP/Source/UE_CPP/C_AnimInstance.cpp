@@ -2,6 +2,7 @@
 #include "Global.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "07_TPS/IRifle.h"
 
 
 void UC_AnimInstance::NativeBeginPlay()
@@ -19,4 +20,9 @@ void UC_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 	Speed = OwnerCharacter->GetVelocity().Size2D();
 	Direction = CalculateDirection(OwnerCharacter->GetVelocity(), OwnerCharacter->GetControlRotation());
+	
+	IIRifle* rifle = Cast<IIRifle>(OwnerCharacter);
+	if (rifle)
+	{ bEquipped = rifle->Get_Equip_Rifle(); }
+
 }
