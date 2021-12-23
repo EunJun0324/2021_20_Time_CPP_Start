@@ -7,8 +7,8 @@
 AC01_BeginOverlap::AC01_BeginOverlap()
 {
 	Root = CreateDefaultSubobject<USceneComponent>("Root");
-	SetRootComponent(Root);
-	Box = CreateDefaultSubobject<UBoxComponent>("Box");
+	SetRootComponent    (Root);
+	Box = CreateDefaultSubobject<UBoxComponent>  ("Box");
 	Box->SetupAttachment(Root);
 	TextRender = CreateDefaultSubobject<UTextRenderComponent>("TextRender");
 	TextRender->SetupAttachment(Root);

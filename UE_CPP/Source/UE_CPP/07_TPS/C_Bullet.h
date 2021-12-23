@@ -11,10 +11,10 @@ class UE_CPP_API AC_Bullet : public AActor
 	
 private :
 	UPROPERTY(VisibleDefaultsOnly)
-		class UCapsuleComponent* Capsule;
-
-	UPROPERTY(VisibleDefaultsOnly)
-		class UStaticMeshComponent* Mesh;
+		class UCapsuleComponent*            Capsule;
+									        
+	UPROPERTY(VisibleDefaultsOnly)	        
+		class UStaticMeshComponent*         Mesh;
 
 	UPROPERTY(VisibleDefaultsOnly)
 		class UProjectileMovementComponent* Projectile;

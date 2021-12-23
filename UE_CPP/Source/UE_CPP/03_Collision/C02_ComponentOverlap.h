@@ -11,10 +11,10 @@ class UE_CPP_API AC02_ComponentOverlap : public AActor
 	
 private :
 	UPROPERTY(VisibleDefaultsOnly)
-		class USceneComponent* Root;
+		class USceneComponent*      Root;
 
 	UPROPERTY(VisibleDefaultsOnly)
-		class UBoxComponent* Box;
+		class UBoxComponent*        Box;
 
 	UPROPERTY(VisibleDefaultsOnly)
 		class UTextRenderComponent* Text;

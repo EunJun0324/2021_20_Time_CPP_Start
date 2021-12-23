@@ -63,15 +63,18 @@ void AC_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis("MoveForward", this, &AC_Player::OnMoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &AC_Player::OnMoveRight);
+	PlayerInputComponent->BindAxis("MoveForward",    this, &AC_Player::OnMoveForward);
+	PlayerInputComponent->BindAxis("MoveRight",      this, &AC_Player::OnMoveRight);
 	PlayerInputComponent->BindAxis("HorizontalLook", this, &AC_Player::OnHorizontalLook);
-	PlayerInputComponent->BindAxis("VerticalLook", this, &AC_Player::OnVerticalLook);
-	PlayerInputComponent->BindAxis("Zoom", this, &AC_Player::OnZoom);
+	PlayerInputComponent->BindAxis("VerticalLook",   this, &AC_Player::OnVerticalLook);
+	PlayerInputComponent->BindAxis("Zoom",           this, &AC_Player::OnZoom);
 
-	PlayerInputComponent->BindAction("Run",  EInputEvent::IE_Pressed, this, &AC_Player::OnRun);
-	PlayerInputComponent->BindAction("Run",  EInputEvent::IE_Released, this, &AC_Player::OffRun);
-	PlayerInputComponent->BindAction("Rifle", EInputEvent::IE_Pressed, this, &AC_Player::OnRifle_Equip);
+	PlayerInputComponent->BindAction("Run",   EInputEvent::IE_Pressed,  this, &AC_Player::OnRun);
+	PlayerInputComponent->BindAction("Run",   EInputEvent::IE_Released, this, &AC_Player::OffRun);
+	PlayerInputComponent->BindAction("Rifle", EInputEvent::IE_Pressed,  this, &AC_Player::OnRifle_Equip);
+	PlayerInputComponent->BindAction("Aim",   EInputEvent::IE_Pressed,  this, &AC_Player::OnAim);
+	PlayerInputComponent->BindAction("Aim",   EInputEvent::IE_Released, this, &AC_Player::OffAim);
+
 }
 
 void AC_Player::OnMoveForward(float AxisValue)
@@ -111,30 +114,29 @@ void AC_Player::OffRun()
 void AC_Player::OnRifle_Equip()
 { Rifle->Equip(); }
 
+void AC_Player::OnAim()
+{ Rifle->Begin_Aim(); }
+
+void AC_Player::OffAim()
+{ Rifle->End_Aim(); }
+
 void AC_Player::Begin_Equip_Rifle()
-{
-	Rifle->Begin_Equip();
-}
+{ Rifle->Begin_Equip(); }
 
 void AC_Player::End_Equip_Rifle()
-{
-	Rifle->End_Equip();
-}
+{ Rifle->End_Equip(); }
 
 void AC_Player::Begin_UnEquip_Rifle()
-{
-	Rifle->Begin_UnEquip();
-}
+{ Rifle->Begin_UnEquip(); }
 
 void AC_Player::End_UnEquip_Rifle()
-{
-	Rifle->End_UnEquip();
-}
+{ Rifle->End_UnEquip(); }
 
 bool AC_Player::Get_Equip_Rifle()
-{
-	return Rifle->GetEquipped();
-}
+{ return Rifle->GetEquipped(); }
+
+bool AC_Player::Get_Aim_Rifle()
+{ return Rifle->GetAiming(); }
 
 
 

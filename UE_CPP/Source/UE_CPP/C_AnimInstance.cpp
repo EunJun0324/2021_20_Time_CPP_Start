@@ -18,11 +18,14 @@ void UC_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 	if (!OwnerCharacter) return;
 
-	Speed = OwnerCharacter->GetVelocity().Size2D();
+	Speed     = OwnerCharacter->GetVelocity().Size2D();
 	Direction = CalculateDirection(OwnerCharacter->GetVelocity(), OwnerCharacter->GetControlRotation());
 	
 	IIRifle* rifle = Cast<IIRifle>(OwnerCharacter);
 	if (rifle)
-	{ bEquipped = rifle->Get_Equip_Rifle(); }
+	{ 
+		bEquipped = rifle->Get_Equip_Rifle(); 
+		bAiming   = rifle->Get_Aim_Rifle();
+	}
 
 }

@@ -40,8 +40,10 @@ public:
 private :
 	void OnMoveForward(float AxisValue);
 	void OnMoveRight(float AxisValue);
+
 	void OnHorizontalLook(float AxisValue);
 	void OnVerticalLook(float AxisValue);
+
 	void OnZoom(float AxisValue);
 
 	void OnRun();
@@ -49,9 +51,13 @@ private :
 
 	void OnRifle_Equip();
 
-	virtual void Begin_Equip_Rifle() override;
-	virtual void End_Equip_Rifle() override;
+	void OnAim();
+	void OffAim();
+
+	virtual void Begin_Equip_Rifle()   override;
+	virtual void End_Equip_Rifle()     override;
 	virtual void Begin_UnEquip_Rifle() override;
-	virtual void End_UnEquip_Rifle() override;
-	virtual bool Get_Equip_Rifle() override;
+	virtual void End_UnEquip_Rifle()   override;
+	virtual bool Get_Equip_Rifle()     override;
+	virtual bool Get_Aim_Rifle()       override;
 };
