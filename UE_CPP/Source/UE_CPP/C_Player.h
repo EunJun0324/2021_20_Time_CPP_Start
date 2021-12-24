@@ -54,6 +54,9 @@ private :
 	void OnAim();
 	void OffAim();
 
+	void OnFire();
+	void OffFire();
+
 	virtual void Begin_Equip_Rifle()   override;
 	virtual void End_Equip_Rifle()     override;
 	virtual void Begin_UnEquip_Rifle() override;
