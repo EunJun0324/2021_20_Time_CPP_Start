@@ -15,6 +15,7 @@
 
 #include "07_TPS/C_Rifle.h"
 #include "07_TPS/C_UserWidget.h"
+#include "08_Parkour/ParkourComponent.h"
 
 
 AC_Player::AC_Player()
@@ -23,6 +24,7 @@ AC_Player::AC_Player()
 
 	CHelpers::CreateComponent<USpringArmComponent>(this, &SpringArm, "SpringArm", GetCapsuleComponent());
 	CHelpers::CreateComponent<UCameraComponent>(this, &Camera, "Camera", SpringArm);
+	CHelpers::CreateActorComponent<UParkourComponent>(this, &Parkour, "Parkour");
 
 	bUseControllerRotationYaw = false;
 	GetCharacterMovement()->bOrientRotationToMovement = true;

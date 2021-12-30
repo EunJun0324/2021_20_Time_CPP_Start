@@ -27,6 +27,9 @@ private :
 	UPROPERTY(VisibleDefaultsOnly)
 		class UCameraComponent*	   Camera;
 
+	UPROPERTY(VisibleDefaultsOnly)
+		class UParkourComponent* Parkour;
+
 private :
 	class AC_Rifle* Rifle;
 	class UC_UserWidget* AutoFire;

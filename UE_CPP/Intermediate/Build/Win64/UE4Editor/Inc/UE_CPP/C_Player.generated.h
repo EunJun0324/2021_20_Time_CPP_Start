@@ -65,7 +65,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AC_Player); \
 	FORCEINLINE static uint32 __PPO__ZoomSpeed() { return STRUCT_OFFSET(AC_Player, ZoomSpeed); } \
 	FORCEINLINE static uint32 __PPO__ZoomRange() { return STRUCT_OFFSET(AC_Player, ZoomRange); } \
 	FORCEINLINE static uint32 __PPO__SpringArm() { return STRUCT_OFFSET(AC_Player, SpringArm); } \
-	FORCEINLINE static uint32 __PPO__Camera() { return STRUCT_OFFSET(AC_Player, Camera); }
+	FORCEINLINE static uint32 __PPO__Camera() { return STRUCT_OFFSET(AC_Player, Camera); } \
+	FORCEINLINE static uint32 __PPO__Parkour() { return STRUCT_OFFSET(AC_Player, Parkour); }
 
 
 #define UE_CPP_Source_UE_CPP_C_Player_h_8_PROLOG

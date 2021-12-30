@@ -92,4 +92,10 @@ public:
 
 		return color;
 	}
+
+	static FString GetStringFromEnum(FString InTypeName, int32 InIndex)
+	{
+		UEnum* ptr = FindObject<UEnum>(ANY_PACKAGE, *InTypeName, true);
+		return ptr->GetNameStringByIndex(InIndex);
+	}
 };

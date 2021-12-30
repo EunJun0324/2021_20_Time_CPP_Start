@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\UE_CPP.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{6DAE4DFD-B69C-454A-B1E9-AB80A780A7BB}</UniqueIdentifier>
+      <UniqueIdentifier>{F2A941D3-9288-45FC-9F12-F487276980FC}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\UE_CPP.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{A80FCCBB-17ED-46D5-829B-8F93FC76DB9B}</UniqueIdentifier>
+      <UniqueIdentifier>{ACD4AD95-A3FA-40D1-BDF8-73FA0032FA20}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -27,7 +27,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\UE_CPP">
-      <UniqueIdentifier>{884471C4-4CDB-4248-B0AE-03EDCE429FF8}</UniqueIdentifier>
+      <UniqueIdentifier>{5C99089C-5BC1-4B11-BA44-B3B369B262DF}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\CHUD.cpp">
       <Filter>Source\UE_CPP</Filter>
@@ -66,7 +66,7 @@
       <Filter>Source\UE_CPP</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\01_Spawn">
-      <UniqueIdentifier>{5A39357C-BD0D-4B1C-B676-F47B9270306A}</UniqueIdentifier>
+      <UniqueIdentifier>{B24BE6CB-DE47-4A09-96A8-57B13B3F93A7}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\01_Spawn\C01_Spawn.cpp">
       <Filter>Source\UE_CPP\01_Spawn</Filter>
@@ -87,7 +87,7 @@
       <Filter>Source\UE_CPP\01_Spawn</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\02_Log">
-      <UniqueIdentifier>{CD232288-270A-405E-9B59-FF77EC737B06}</UniqueIdentifier>
+      <UniqueIdentifier>{AED7669D-862D-49D0-A4FB-34040750C95C}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\02_Log\C01_Log.cpp">
       <Filter>Source\UE_CPP\02_Log</Filter>
@@ -96,7 +96,7 @@
       <Filter>Source\UE_CPP\02_Log</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\03_Collision">
-      <UniqueIdentifier>{BE8C4057-4D2C-4871-BBD8-CB523D33A9B9}</UniqueIdentifier>
+      <UniqueIdentifier>{F71E0736-3EAC-4E73-B33F-055D9E376C1D}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\03_Collision\C01_BeginOverlap.cpp">
       <Filter>Source\UE_CPP\03_Collision</Filter>
@@ -147,7 +147,7 @@
       <Filter>Source\UE_CPP\03_Collision</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\04_Particle">
-      <UniqueIdentifier>{53E95C00-2AED-45F2-9FC6-3C82C0FDD56C}</UniqueIdentifier>
+      <UniqueIdentifier>{B380538F-D274-4FF2-A837-249346752285}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\04_Particle\C01_Praticle.cpp">
       <Filter>Source\UE_CPP\04_Particle</Filter>
@@ -162,7 +162,7 @@
       <Filter>Source\UE_CPP\04_Particle</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\05_LineTrace">
-      <UniqueIdentifier>{CB1648FE-57B4-451C-84CA-16E8176704D5}</UniqueIdentifier>
+      <UniqueIdentifier>{D249EFFE-0327-4B0F-87B3-3C44ABA14E3C}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\05_LineTrace\C01_LineTrace.cpp">
       <Filter>Source\UE_CPP\05_LineTrace</Filter>
@@ -177,7 +177,7 @@
       <Filter>Source\UE_CPP\05_LineTrace</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\06_Sound">
-      <UniqueIdentifier>{DC0AE877-FEA3-4132-BDDD-D07AB4980D43}</UniqueIdentifier>
+      <UniqueIdentifier>{BDE55104-CB2D-4C0E-8B22-52652946C53B}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\06_Sound\C01_Sound2D.cpp">
       <Filter>Source\UE_CPP\06_Sound</Filter>
@@ -192,7 +192,7 @@
       <Filter>Source\UE_CPP\06_Sound</Filter>
     </ClInclude>
     <Filter Include="Source\UE_CPP\07_TPS">
-      <UniqueIdentifier>{5BAD0695-15B9-4EF0-B16C-9AEF96C5AA2D}</UniqueIdentifier>
+      <UniqueIdentifier>{EE15EB46-124B-487B-B632-E0F890947FC0}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\UE_CPP\07_TPS\C_AnimNotifyState.cpp">
       <Filter>Source\UE_CPP\07_TPS</Filter>
@@ -224,8 +224,17 @@
     <ClInclude Include="..\..\Source\UE_CPP\07_TPS\IRifle.h">
       <Filter>Source\UE_CPP\07_TPS</Filter>
     </ClInclude>
+    <Filter Include="Source\UE_CPP\08_Parkour">
+      <UniqueIdentifier>{337F605C-27A6-4852-AA55-C7037135804C}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UE_CPP\08_Parkour\ParkourComponent.cpp">
+      <Filter>Source\UE_CPP\08_Parkour</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UE_CPP\08_Parkour\ParkourComponent.h">
+      <Filter>Source\UE_CPP\08_Parkour</Filter>
+    </ClInclude>
     <Filter Include="Source\UE_CPP\Utilities">
-      <UniqueIdentifier>{CA317BF8-6E4E-4394-8831-3DDEEB1FAFB2}</UniqueIdentifier>
+      <UniqueIdentifier>{F5D06675-830B-4A6A-A52B-FCE037A40597}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\UE_CPP\Utilities\CHelpers.h">
       <Filter>Source\UE_CPP\Utilities</Filter>
