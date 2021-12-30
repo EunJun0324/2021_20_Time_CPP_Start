@@ -28,4 +28,5 @@ void UC_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bAiming   = rifle->Get_Aim_Rifle();
 	}
 
+	Pitch = OwnerCharacter->GetBaseAimRotation().Pitch;
 }

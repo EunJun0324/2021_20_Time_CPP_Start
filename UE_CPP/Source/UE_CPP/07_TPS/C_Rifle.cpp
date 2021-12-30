@@ -2,6 +2,7 @@
 #include "Global.h"
 
 #include "C_Bullet.h"
+#include "CHUD.h"
 
 #include "Gameframework/Character.h"
 #include "Gameframework/PlayerController.h"
@@ -20,6 +21,7 @@
 #include "Particles/ParticleSystemComponent.h"
 
 #include "Materials/MaterialInstanceConstant.h"
+
 
 AC_Rifle::AC_Rifle()
 {
@@ -41,6 +43,7 @@ AC_Rifle::AC_Rifle()
 	CHelpers::GetClass<AC_Bullet>                (&BulletClass,      "Blueprint'/Game/07_TPS/BP_C_Bullet.BP_C_Bullet_C'");
 	CHelpers::GetAsset<UParticleSystem>          (&ImpactParticle,   "ParticleSystem'/Game/Particles_Rifle/Particles/VFX_Impact_Default.VFX_Impact_Default'");
 	CHelpers::GetAsset<UMaterialInstanceConstant>(&ImpactDecal,      "MaterialInstanceConstant'/Game/Materials/M_Decal_Inst.M_Decal_Inst'");
+
 }
 
 void AC_Rifle::BeginPlay()
@@ -53,6 +56,8 @@ void AC_Rifle::BeginPlay()
 	OnTimelineFloat.BindUFunction(this, "Zooming");
 	Timeline.AddInterpFloat(Curve, OnTimelineFloat);
 	Timeline.SetPlayRate   (200);
+
+	Delay = 0;
 }
 
 void AC_Rifle::Tick(float DeltaTime)
@@ -60,6 +65,29 @@ void AC_Rifle::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	Timeline.TickTimeline(DeltaTime);
 
+	Delay -= DeltaTime;
+
+	if (!bAiming) return;
+
+
+	UCameraComponent* camera = CHelpers::GetComponent<UCameraComponent>(OwnerCharacter);
+
+	FVector    direction = camera->GetForwardVector();
+	FTransform transform = camera->GetComponentToWorld();
+	FVector    start     = transform.GetLocation() + direction;
+	FVector    end       = transform.GetLocation() + direction * AimDistance;
+
+	ACHUD* hud = OwnerCharacter->GetController<APlayerController>()->GetHUD<ACHUD>();
+
+	TArray<AActor*> ignoreaActors;
+	ignoreaActors.Add(OwnerCharacter);
+
+	FHitResult hitResult;
+
+	UKismetSystemLibrary::LineTraceSingle(GetWorld(), start, end, ETraceTypeQuery::TraceTypeQuery3, false, ignoreaActors, EDrawDebugTrace::None, hitResult, true);
+
+	if (hitResult.bBlockingHit) hud->EnableTarget();
+	else						hud->DisableTarget();
 }
 
 AC_Rifle* AC_Rifle::Spawn(UWorld* InWorld, ACharacter* InOwnerCharacter)
@@ -121,6 +149,9 @@ void AC_Rifle::Firing()
 		}
 	}
 
+	PitchAngle -= 0.25 * GetWorld()->DeltaTimeSeconds;
+	OwnerCharacter->AddControllerPitchInput(PitchAngle);
+
 	TArray<AActor*> ignoreActors;
 	ignoreActors.Add(OwnerCharacter);
 
@@ -135,6 +166,16 @@ void AC_Rifle::Firing()
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactParticle, hitResult.Location, rotator);
 		UDecalComponent* decal = UGameplayStatics::SpawnDecalAtLocation(GetWorld(), ImpactDecal, FVector(5), hitResult.Location, rotator, 10);
 		decal->SetFadeScreenSize(0);
+
+		UStaticMeshComponent* mesh = Cast<UStaticMeshComponent>(hitResult.GetActor()->GetRootComponent());
+
+		if (mesh && mesh->BodyInstance.bSimulatePhysics)
+		{
+			direction = hitResult.GetActor()->GetActorLocation() - OwnerCharacter->GetActorLocation();
+			direction.Normalize();
+
+			mesh->AddImpulseAtLocation(direction * 300 * mesh->GetMass() , OwnerCharacter->GetActorLocation());
+		}
 	}
 
 }
@@ -192,6 +233,8 @@ void AC_Rifle::Begin_Aim()
 	springArm->SocketOffset    = FVector(0, 30, 10);
 
 	Timeline.PlayFromStart();
+
+	OwnerCharacter->GetController<APlayerController>()->GetHUD<ACHUD>()->Visible();
 }
 
 void AC_Rifle::End_Aim()
@@ -208,6 +251,8 @@ void AC_Rifle::End_Aim()
 	springArm->SocketOffset    = FVector(0, 60, 0);
 
 	Timeline.ReverseFromEnd();
+
+	OwnerCharacter->GetController<APlayerController>()->GetHUD<ACHUD>()->InVisible();
 }
 
 void AC_Rifle::Begin_Fire()
@@ -216,14 +261,35 @@ void AC_Rifle::Begin_Fire()
 	if (bEquipping) return;
 	if (!bAiming)   return;
 	if (bFiring)    return;
+	if (Delay > 0)  return;
 
 	bFiring = true;
+
+	if (bAutoFire)
+	{
+		GetWorld()->GetTimerManager().SetTimer(AutoFireHandle, this, &AC_Rifle::Firing, 0.1, true, 0);
+		return;
+	}
+
+	Delay = 0.25f;
 
 	Firing();
 }
 
 void AC_Rifle::End_Fire()
-{ bFiring = false; }
+{ 
+	bFiring = false; 
+
+	if (bAutoFire)
+		GetWorld()->GetTimerManager().ClearTimer(AutoFireHandle);
+
+}
+
+void AC_Rifle::ToggleAutoFire()
+{
+	if (!bFiring)
+		bAutoFire = !bAutoFire;
+}
 
 bool AC_Rifle::IsAvaliableAim()
 {

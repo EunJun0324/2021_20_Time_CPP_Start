@@ -11,12 +11,15 @@ class UE_CPP_API AC_Player : public ACharacter , public IIRifle
 	GENERATED_BODY()
 
 private :
+	UPROPERTY(EditDefaultsOnly, Category = "UserInterface")
+		TSubclassOf<class UC_UserWidget> AutoFireClass;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Zoom")
 		float ZoomSpeed = 1000;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Zoom")
 		FVector2D ZoomRange = FVector2D(0, 500);
-
+	
 private :
 	UPROPERTY(VisibleDefaultsOnly)
 		class USpringArmComponent* SpringArm;
@@ -26,6 +29,7 @@ private :
 
 private :
 	class AC_Rifle* Rifle;
+	class UC_UserWidget* AutoFire;
 
 public:
 	AC_Player();
@@ -56,6 +60,8 @@ private :
 
 	void OnFire();
 	void OffFire();
+
+	void OnAutoFire();
 
 	virtual void Begin_Equip_Rifle()   override;
 	virtual void End_Equip_Rifle()     override;

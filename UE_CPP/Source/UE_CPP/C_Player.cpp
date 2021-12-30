@@ -14,6 +14,7 @@
 #include "Materials/MaterialInstanceDynamic.h"
 
 #include "07_TPS/C_Rifle.h"
+#include "07_TPS/C_UserWidget.h"
 
 
 AC_Player::AC_Player()
@@ -43,6 +44,8 @@ AC_Player::AC_Player()
 	SpringArm->TargetArmLength = 200;
 	SpringArm->bUsePawnControlRotation = true;
 	SpringArm->SocketOffset = FVector(0, 60, 0);
+
+	CHelpers::GetClass<UC_UserWidget>(&AutoFireClass, "WidgetBlueprint'/Game/07_TPS/BP_CAutoFire.BP_CAutoFire_C'");
 }
 
 void AC_Player::BeginPlay()
@@ -50,7 +53,8 @@ void AC_Player::BeginPlay()
 	Super::BeginPlay();
 	
 	Rifle = AC_Rifle::Spawn(GetWorld(), this);
-
+	AutoFire = CreateWidget<UC_UserWidget, APlayerController>(GetController<APlayerController>(), AutoFireClass);
+	AutoFire->AddToViewport();
 }
 
 void AC_Player::Tick(float DeltaTime)
@@ -69,13 +73,15 @@ void AC_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("VerticalLook",   this, &AC_Player::OnVerticalLook);
 	PlayerInputComponent->BindAxis("Zoom",           this, &AC_Player::OnZoom);
 
-	PlayerInputComponent->BindAction("Run",   EInputEvent::IE_Pressed,  this, &AC_Player::OnRun);
-	PlayerInputComponent->BindAction("Run",   EInputEvent::IE_Released, this, &AC_Player::OffRun);
-	PlayerInputComponent->BindAction("Rifle", EInputEvent::IE_Pressed,  this, &AC_Player::OnRifle_Equip);
-	PlayerInputComponent->BindAction("Aim",   EInputEvent::IE_Pressed,  this, &AC_Player::OnAim);
-	PlayerInputComponent->BindAction("Aim",   EInputEvent::IE_Released, this, &AC_Player::OffAim);
-	PlayerInputComponent->BindAction("Fire",  EInputEvent::IE_Pressed,  this, &AC_Player::OnFire);
-	PlayerInputComponent->BindAction("Fire",  EInputEvent::IE_Released, this, &AC_Player::OffFire);
+	PlayerInputComponent->BindAction("Run",       EInputEvent::IE_Pressed,  this, &AC_Player::OnRun);
+	PlayerInputComponent->BindAction("Run",       EInputEvent::IE_Released, this, &AC_Player::OffRun);
+	PlayerInputComponent->BindAction("Rifle",     EInputEvent::IE_Pressed,  this, &AC_Player::OnRifle_Equip);
+	PlayerInputComponent->BindAction("Aim",       EInputEvent::IE_Pressed,  this, &AC_Player::OnAim);
+	PlayerInputComponent->BindAction("Aim",       EInputEvent::IE_Released, this, &AC_Player::OffAim);
+	PlayerInputComponent->BindAction("Fire",      EInputEvent::IE_Pressed,  this, &AC_Player::OnFire);
+	PlayerInputComponent->BindAction("Fire",      EInputEvent::IE_Released, this, &AC_Player::OffFire);
+	PlayerInputComponent->BindAction("AutoFire",  EInputEvent::IE_Pressed,  this, &AC_Player::OnAutoFire);
+
 
 }
 
@@ -127,6 +133,12 @@ void AC_Player::OnFire()
 
 void AC_Player::OffFire()
 { Rifle->End_Fire(); }
+
+void AC_Player::OnAutoFire()
+{ 
+	Rifle->ToggleAutoFire(); 
+	Rifle->GetAutoFire() ? AutoFire->On() : AutoFire->Off();
+}
 
 void AC_Player::Begin_Equip_Rifle()
 { Rifle->Begin_Equip(); }

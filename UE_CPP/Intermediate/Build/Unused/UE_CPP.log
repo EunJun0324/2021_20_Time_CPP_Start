@@ -1,0 +1,29 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\user\Desktop\UE_CPP).
+  Building UE_CPPEditor...
+  Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 4 actions with 12 processes...
+    [1/4] UE_CPPGameModeBase.cpp
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ConstructorHelpers.h(188): error C2027: 정의되지 않은 형식 'AHUD'을(를) 사용했습니다.
+    C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h(19): note: 'AHUD' 선언을 참조하십시오.
+    C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ConstructorHelpers.h(183): note: 클래스 템플릿 멤버 함수 'ConstructorHelpers::FClassFinder<T>::FClassFinder(const TCHAR *)'을(를) 컴파일하는 중입니다.
+            with
+            [
+                T=AHUD
+            ]
+    C:\Users\user\Desktop\UE_CPP\UE_CPP\Source\UE_CPP\Utilities/CHelpers.h(22): note: 컴파일되는 함수 템플릿 인스턴스화 'ConstructorHelpers::FClassFinder<T>::FClassFinder(const TCHAR *)'에 대한 참조를 확인하세요.
+            with
+            [
+                T=AHUD
+            ]
+    C:\Users\user\Desktop\UE_CPP\UE_CPP\Source\UE_CPP\Utilities/CHelpers.h(22): note: 컴파일되는 클래스 템플릿 인스턴스화 'ConstructorHelpers::FClassFinder<T>'에 대한 참조를 확인하세요.
+            with
+            [
+                T=AHUD
+            ]
+    C:\Users\user\Desktop\UE_CPP\UE_CPP\Source\UE_CPP\UE_CPPGameModeBase.cpp(7): note: 컴파일되는 함수 템플릿 인스턴스화 'void CHelpers::GetClass<AHUD>(TSubclassOf<AHUD> *,FString)'에 대한 참조를 확인하세요.
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ConstructorHelpers.h(188): error C2672: 'StaticClass': 일치하는 오버로드된 함수가 없습니다.
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ConstructorHelpers.h(188): error C2783: 'UClass *StaticClass(void)': 'ClassType'의 템플릿 인수를 추론할 수 없습니다.
+    C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ReflectedTypeAccessors.h(13): note: 'StaticClass' 선언을 참조하십시오.
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ConstructorHelpers.h(188): error C2660: 'ConstructorHelpersInternal::FindOrLoadClass': 함수는 1개의 인수를 사용하지 않습니다.
+    C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ConstructorHelpers.h(69): note: 'ConstructorHelpersInternal::FindOrLoadClass' 선언을 참조하십시오.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.MakeFile.Targets(45,5): error MSB3073: ""C:\Program Files\Epic Games\UE_4.26\Engine\Build\BatchFiles\Build.bat" UE_CPPEditor Win64 Development -Project="C:\Users\user\Desktop\UE_CPP\UE_CPP\UE_CPP.uproject" -WaitMutex -FromMsBuild" 명령이 종료되었습니다(코드: 6).

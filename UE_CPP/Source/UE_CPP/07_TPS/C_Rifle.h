@@ -88,12 +88,15 @@ public :
 	void Begin_Fire();
 	void End_Fire();
 
+	void ToggleAutoFire();
+
 private :
 	bool IsAvaliableAim();
 
 public :
 	FORCEINLINE bool GetEquipped() { return bEquipped; }
 	FORCEINLINE bool GetAiming()   { return bAiming; }
+	FORCEINLINE bool GetAutoFire() { return bAutoFire; }
 
 
 private :
@@ -102,8 +105,15 @@ private :
 	bool bEquipped;
 	bool bEquipping;
 	bool bAiming;
-	bool bFiring;
+	bool bFiring; 
+	bool bAutoFire;
 
 	FTimeline        Timeline;
 	FOnTimelineFloat OnTimelineFloat;
+
+	float PitchAngle;
+
+	float Delay;
+
+	FTimerHandle AutoFireHandle;
 };
