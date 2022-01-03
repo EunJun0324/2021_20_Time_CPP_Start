@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Engine/DataTable.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "ParkourComponent.generated.h"
 
 UENUM(BlueprintType)
@@ -53,6 +54,13 @@ class UE_CPP_API UParkourComponent : public UActorComponent
 private :
 	UPROPERTY(EditAnywhere, Category = "DataTable")
 		class UDataTable* DataTable;
+
+	UPROPERTY(EditAnywhere, Category = "Trace")
+		float TraceDistance = 600;
+
+	UPROPERTY(EditAnywhere, Category = "Trace")
+		TEnumAsByte<EDrawDebugTrace::Type> DrawDebugType;
+
 public:	
 	UParkourComponent();
 
@@ -63,5 +71,23 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private :
+	void LineTrace(EParkourArrowType InType);
+
+	void CheckTarce_Center();
+	void CheckTarce_Ceil();
+	void CheckTarce_Floor();
+	void CheckTarce_LeftAndRight();
+	void CheckTarce_Land();
+
+private:
+	class ACharacter* OwnerCharacter;
+
 	TMap<EParkourType, TArray<FParkourData>> DataMap;
+
+	class UArrowComponent* Arrows[(int32)EParkourArrowType::Max];
+	FHitResult HitResults[(int32)EParkourArrowType::Max];
+
+	AActor* HitObstacle;
+	FVector HitObstacleExtent;
+	float   HitDistance;
 };

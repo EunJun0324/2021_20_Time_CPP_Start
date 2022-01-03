@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "07_TPS/IRifle.h"
+#include "08_Parkour/ParkourComponent.h"
 #include "C_Player.generated.h"
 
 UCLASS()
@@ -29,6 +30,12 @@ private :
 
 	UPROPERTY(VisibleDefaultsOnly)
 		class UParkourComponent* Parkour;
+
+	UPROPERTY(VisibleDefaultsOnly)
+		class USceneComponent* ArrowGroup;
+
+	UPROPERTY(VisibleDefaultsOnly)
+		class UArrowComponent* Arrows[(int32)EParkourArrowType::Max];
 
 private :
 	class AC_Rifle* Rifle;

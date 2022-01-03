@@ -10,4 +10,9 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
 C:\Users\user\Desktop\UE_CPP\UE_CPP\Source\UE_CPP\07_TPS/IRifle.h
 C:\Users\user\Desktop\UE_CPP\UE_CPP\Intermediate\Build\Win64\UE4Editor\Inc\UE_CPP\IRifle.generated.h
+C:\Users\user\Desktop\UE_CPP\UE_CPP\Source\UE_CPP\08_Parkour/ParkourComponent.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/DataTable.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Public\DataTableUtils.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DataTable.generated.h
+C:\Users\user\Desktop\UE_CPP\UE_CPP\Intermediate\Build\Win64\UE4Editor\Inc\UE_CPP\ParkourComponent.generated.h
 C:\Users\user\Desktop\UE_CPP\UE_CPP\Intermediate\Build\Win64\UE4Editor\Inc\UE_CPP\C_Player.generated.h

@@ -48,6 +48,41 @@ AC_Player::AC_Player()
 	SpringArm->SocketOffset = FVector(0, 60, 0);
 
 	CHelpers::GetClass<UC_UserWidget>(&AutoFireClass, "WidgetBlueprint'/Game/07_TPS/BP_CAutoFire.BP_CAutoFire_C'");
+
+	CHelpers::CreateComponent<USceneComponent>(this, &ArrowGroup, "ArrowGroup", GetCapsuleComponent());
+	for (int32 i = 0; i < (int32)EParkourArrowType::Max; i++)
+	{
+		FName name = FName(*CHelpers::GetStringFromEnum("EParkourArrowType", i));
+		CHelpers::CreateComponent<UArrowComponent>(this, &Arrows[i], name, ArrowGroup);
+
+		switch ((EParkourArrowType)i)
+		{
+		case EParkourArrowType::Center : 
+			Arrows[i]->ArrowColor = FColor::Red;
+			break;
+		case EParkourArrowType::Ceil   :
+			Arrows[i]->ArrowColor = FColor::Green;
+			Arrows[i]->SetRelativeLocation(FVector(0, 0, 100));
+			break;
+		case EParkourArrowType::Floor:
+			Arrows[i]->ArrowColor = FColor::Blue;
+			Arrows[i]->SetRelativeLocation(FVector(0, 0, -80));
+			break;
+		case EParkourArrowType::Left:
+			Arrows[i]->ArrowColor = FColor::Magenta;
+			Arrows[i]->SetRelativeLocation(FVector(0, -30, 0));
+			break;
+		case EParkourArrowType::Right:
+			Arrows[i]->ArrowColor = FColor::Magenta;
+			Arrows[i]->SetRelativeLocation(FVector(0, 30, 0));
+			break;
+		case EParkourArrowType::Land:
+			Arrows[i]->ArrowColor = FColor::Yellow;
+			Arrows[i]->SetRelativeLocation(FVector(200, 0, 100));
+			Arrows[i]->SetRelativeRotation(FRotator(-90, 0, 0));
+			break;
+		}
+	}
 }
 
 void AC_Player::BeginPlay()

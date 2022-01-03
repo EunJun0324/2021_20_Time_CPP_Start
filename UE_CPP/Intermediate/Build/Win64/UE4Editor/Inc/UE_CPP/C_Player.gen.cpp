@@ -23,6 +23,8 @@ void EmptyLinkFunctionForGeneratedCodeC_Player() {}
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	UE_CPP_API UClass* Z_Construct_UClass_UParkourComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UArrowComponent_NoRegister();
 	UE_CPP_API UClass* Z_Construct_UClass_UIRifle_NoRegister();
 // End Cross Module References
 	void AC_Player::StaticRegisterNativesAC_Player()
@@ -62,6 +64,14 @@ void EmptyLinkFunctionForGeneratedCodeC_Player() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Parkour_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Parkour;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ArrowGroup_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ArrowGroup;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Arrows_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Arrows;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
@@ -123,6 +133,23 @@ void EmptyLinkFunctionForGeneratedCodeC_Player() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AC_Player_Statics::NewProp_Parkour = { "Parkour", nullptr, (EPropertyFlags)0x00400000000b0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AC_Player, Parkour), Z_Construct_UClass_UParkourComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AC_Player_Statics::NewProp_Parkour_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AC_Player_Statics::NewProp_Parkour_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AC_Player_Statics::NewProp_ArrowGroup_MetaData[] = {
+		{ "Category", "C_Player" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "C_Player.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AC_Player_Statics::NewProp_ArrowGroup = { "ArrowGroup", nullptr, (EPropertyFlags)0x00400000000b0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AC_Player, ArrowGroup), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AC_Player_Statics::NewProp_ArrowGroup_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AC_Player_Statics::NewProp_ArrowGroup_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AC_Player_Statics::NewProp_Arrows_MetaData[] = {
+		{ "ArraySizeEnum", "/Script/UE_CPP.EParkourArrowType" },
+		{ "Category", "C_Player" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "C_Player.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AC_Player_Statics::NewProp_Arrows = { "Arrows", nullptr, (EPropertyFlags)0x00400000000b0009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, CPP_ARRAY_DIM(Arrows, AC_Player), STRUCT_OFFSET(AC_Player, Arrows), Z_Construct_UClass_UArrowComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AC_Player_Statics::NewProp_Arrows_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AC_Player_Statics::NewProp_Arrows_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AC_Player_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AC_Player_Statics::NewProp_AutoFireClass,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AC_Player_Statics::NewProp_ZoomSpeed,
@@ -130,6 +157,8 @@ void EmptyLinkFunctionForGeneratedCodeC_Player() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AC_Player_Statics::NewProp_SpringArm,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AC_Player_Statics::NewProp_Camera,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AC_Player_Statics::NewProp_Parkour,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AC_Player_Statics::NewProp_ArrowGroup,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AC_Player_Statics::NewProp_Arrows,
 	};
 		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AC_Player_Statics::InterfaceParams[] = {
 			{ Z_Construct_UClass_UIRifle_NoRegister, (int32)VTABLE_OFFSET(AC_Player, IIRifle), false },
@@ -161,7 +190,7 @@ void EmptyLinkFunctionForGeneratedCodeC_Player() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AC_Player, 1336861964);
+	IMPLEMENT_CLASS(AC_Player, 540560491);
 	template<> UE_CPP_API UClass* StaticClass<AC_Player>()
 	{
 		return AC_Player::StaticClass();
