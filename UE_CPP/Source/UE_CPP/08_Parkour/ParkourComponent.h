@@ -85,6 +85,7 @@ private:
 	TMap<EParkourType, TArray<FParkourData>> DataMap;
 
 	class UArrowComponent* Arrows[(int32)EParkourArrowType::Max];
+	
 	FHitResult HitResults[(int32)EParkourArrowType::Max];
 
 	AActor* HitObstacle;

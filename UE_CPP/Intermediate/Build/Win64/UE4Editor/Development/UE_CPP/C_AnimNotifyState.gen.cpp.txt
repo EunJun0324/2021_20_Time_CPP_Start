@@ -1,7 +1,0 @@
-C:\Users\user\Desktop\UE_CPP\UE_CPP\Intermediate\Build\Win64\UE4Editor\Development\UE_CPP\Definitions.UE_CPP.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\Users\user\Desktop\UE_CPP\UE_CPP\Source\UE_CPP/07_TPS/C_AnimNotifyState.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Animation/AnimNotifies/AnimNotifyState.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\AnimNotifyState.generated.h
-C:\Users\user\Desktop\UE_CPP\UE_CPP\Intermediate\Build\Win64\UE4Editor\Inc\UE_CPP\C_AnimNotifyState.generated.h

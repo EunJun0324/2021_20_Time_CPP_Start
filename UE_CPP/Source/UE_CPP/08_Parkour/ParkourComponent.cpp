@@ -58,6 +58,15 @@ void UParkourComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	CheckTarce_Center();
+	if (HitObstacle)
+	{
+		CheckTarce_Ceil();
+		CheckTarce_Floor();
+		CheckTarce_LeftAndRight();
+	}
+
+	CheckTarce_Land();
 }
 
 void UParkourComponent::LineTrace(EParkourArrowType InType)
@@ -77,21 +86,54 @@ void UParkourComponent::LineTrace(EParkourArrowType InType)
 
 void UParkourComponent::CheckTarce_Center()
 {
+	HitObstacle = nullptr;
+	HitObstacleExtent = FVector::ZeroVector;
+	HitDistance = 0;
+	EParkourArrowType type = EParkourArrowType::Center;
+	LineTrace(type);
+	const FHitResult& hitResult = HitResults[(int32)type];
+	if (hitResult.bBlockingHit)
+	{
+		UStaticMeshComponent* mesh = CHelpers::GetComponent<UStaticMeshComponent>(hitResult.GetActor());
+
+		if (mesh)
+		{
+			HitObstacle = hitResult.GetActor();
+
+			FVector minBound, maxBound;
+
+			mesh->GetLocalBounds(minBound, maxBound);
+
+			float x = FMath::Abs(minBound.X - maxBound.X);
+			float y = FMath::Abs(minBound.Y - maxBound.Y);
+			float z = FMath::Abs(minBound.Z - maxBound.Z);
+
+			HitObstacleExtent = FVector(x, y, z);
+
+			HitDistance = hitResult.Distance;
+		}
+	}
+
 }
 
 void UParkourComponent::CheckTarce_Ceil()
 {
+	LineTrace(EParkourArrowType::Ceil);
 }
 
 void UParkourComponent::CheckTarce_Floor()
 {
+	LineTrace(EParkourArrowType::Floor);
 }
 
 void UParkourComponent::CheckTarce_LeftAndRight()
 {
+	LineTrace(EParkourArrowType::Right);
+	LineTrace(EParkourArrowType::Left);
 }
 
 void UParkourComponent::CheckTarce_Land()
 {
+
 }
 
