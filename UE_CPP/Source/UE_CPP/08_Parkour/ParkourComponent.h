@@ -89,6 +89,10 @@ private :
 	void DoParkour_Slide();
 	void EndParkour_Slide();
 
+	bool Check_FallMode();
+	void DoParkour_Fall();
+	void EndParkour_Fall();
+
 	bool Check_ObstacleMode(EParkourType InType, FParkourData& OutData);
 	void DoParkour_Obstacle(EParkourType InType, const FParkourData& OutData);
 	void EndParkour_Obstacle();
@@ -113,7 +117,7 @@ private:
 
 	EParkourType Type = EParkourType::Max;
 
-	FVector Normal;
-	FVector Forward;
-	float Dot;
+	AActor* BackupObstacle;
+
+	bool bStartFall;
 };
