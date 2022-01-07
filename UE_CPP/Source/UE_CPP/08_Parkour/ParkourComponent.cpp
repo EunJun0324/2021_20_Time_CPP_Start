@@ -1,5 +1,6 @@
 #include "08_Parkour/ParkourComponent.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "Components/ArrowComponent.h"
 #include "Global.h"
 
@@ -67,7 +68,19 @@ void UParkourComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 	}
 
 	CheckTarce_Land();
+
+	if (HitObstacle)
+	{
+		Normal = HitResults[(int32)EParkourArrowType::Center].Normal;
+		Forward = HitObstacle->GetActorForwardVector();
+
+		Dot = Normal | Forward;
+
+		CLog::Log(FString::SanitizeFloat(Dot));
+	}
 }
+
+
 
 void UParkourComponent::LineTrace(EParkourArrowType InType)
 {
@@ -137,3 +150,193 @@ void UParkourComponent::CheckTarce_Land()
 
 }
 
+
+bool UParkourComponent::Check_Obstacle()
+{
+	if (!HitObstacle) return false;
+	
+	bool b = true;
+	b &= HitResults[(int32)EParkourArrowType::Center].bBlockingHit;
+	b &= HitResults[(int32)EParkourArrowType::Left].bBlockingHit;
+	b &= HitResults[(int32)EParkourArrowType::Right].bBlockingHit;
+	if (!b) return false;
+
+	FVector center = HitResults[(int32)EParkourArrowType::Center].Normal;
+	FVector left   = HitResults[(int32)EParkourArrowType::Left].Normal;
+	FVector right  = HitResults[(int32)EParkourArrowType::Right].Normal;
+
+	if (!center.Equals(left))  return false;
+	if (!center.Equals(right)) return false;
+
+	return true;
+}
+
+
+bool UParkourComponent::Check_ClimbMode()
+{
+	if (!HitResults[(int32)EParkourArrowType::Ceil].bBlockingHit) return false;
+
+	const TArray<FParkourData>* data = DataMap.Find(EParkourType::Climb);
+
+	if((*data)[0].MinDistance < HitDistance) return false;
+	if((*data)[0].MaxDistance > HitDistance) return false;
+	if (FMath::IsNearlyEqual((*data)[0].Extent, HitObstacleExtent.Z)) return false;
+	
+	return true;
+}
+
+void UParkourComponent::DoParkour_Climb()
+{
+	Type = EParkourType::Climb;
+
+	OwnerCharacter->SetActorLocation(HitResults[(int32)EParkourArrowType::Center].ImpactPoint);
+
+	const TArray<FParkourData>* data = DataMap.Find(EParkourType::Climb);
+	OwnerCharacter->PlayAnimMontage((*data)[0].Montage, (*data)[0].PlayRatio, (*data)[0].SectionName);
+	OwnerCharacter->GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Flying);
+
+	CLog::Log("DoParkour");
+}
+
+void UParkourComponent::EndParkour_Climb()
+{
+	OwnerCharacter->GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Walking);
+}
+
+bool UParkourComponent::Check_SlideMode()
+{
+	if (!HitResults[(int32)EParkourArrowType::Floor].bBlockingHit) return false;
+
+	const TArray<FParkourData>* data = DataMap.Find(EParkourType::Slide);
+	if ((*data)[0].MinDistance < HitDistance) return false;
+	if ((*data)[0].MaxDistance > HitDistance) return false;
+
+	UArrowComponent* arrow = Arrows[(int32)EParkourArrowType::Floor];
+	FLinearColor color = FLinearColor(arrow->ArrowColor);
+
+	FVector arrowLocation = arrow->GetComponentToWorld().GetLocation();
+	FVector ownerLocation = OwnerCharacter->GetActorLocation();
+
+	float extent = (*data)[0].Extent;
+	float z = arrowLocation.Z + extent;
+
+	FVector forward = OwnerCharacter->GetActorForwardVector();
+	forward = FVector(forward.X, forward.Y, 0.0f);
+
+	FVector start = FVector(arrowLocation.X, arrowLocation.Y, z);
+	FVector end = start + forward * TraceDistance;
+
+	TArray<AActor*> ignoreActors;
+	ignoreActors.Add(OwnerCharacter);
+
+	FHitResult hitResult;
+
+	bool b = UKismetSystemLibrary::BoxTraceSingle(GetWorld(), start, end, FVector(0, extent, extent), OwnerCharacter->GetActorRotation(), ETraceTypeQuery::TraceTypeQuery1, false, ignoreActors, EDrawDebugTrace::ForDuration, hitResult, true);
+	if (b) return false;
+
+	return true;
+}
+
+void UParkourComponent::DoParkour_Slide()
+{
+}
+
+void UParkourComponent::EndParkour_Slide()
+{
+}
+
+bool UParkourComponent::Check_ObstacleMode(EParkourType InType, FParkourData& OutData)
+{
+	const TArray<FParkourData>* datas = DataMap.Find(InType);
+
+	for (int32 i = 0; i < (*datas).Num(); i++)
+	{
+		bool bExcute = true;
+		bExcute &= (*datas)[i].MinDistance < HitDistance;
+		bExcute &= (*datas)[i].MaxDistance > HitDistance;
+		bExcute &= FMath::IsNearlyEqual((*datas)[i].Extent, HitObstacleExtent.Y, 10);
+
+		OutData = (*datas)[i];
+
+		if (bExcute) return true;
+	}
+
+	return false;
+}
+
+void UParkourComponent::DoParkour_Obstacle(EParkourType InType, const FParkourData& OutData)
+{
+	Type = InType;
+
+	OwnerCharacter->PlayAnimMontage(OutData.Montage, OutData.PlayRatio, OutData.SectionName);
+}
+
+void UParkourComponent::EndParkour_Obstacle()
+{
+}
+
+
+void UParkourComponent::DoParkour()
+{
+	if (!(Type == EParkourType::Max)) return;
+
+	if (!Check_Obstacle()) return;
+
+	if (Check_ClimbMode())
+	{
+		DoParkour_Climb();
+		return;
+	}
+
+	if (Check_SlideMode())
+	{
+		DoParkour_Slide();
+		return;
+	}
+
+	if (HitResults[(int32)EParkourArrowType::Ceil].bBlockingHit) return;
+
+	/*
+	FVector normal  = HitResults[(int32)EParkourArrowType::Center].Normal;
+	FVector forward = HitObstacle->GetActorForwardVector();
+	
+	float dot = normal | forward;
+	
+	if (!FMath::IsNearlyZero(dot, 0.1f)) return;
+	*/
+
+	FParkourData data;
+
+	if (Check_ObstacleMode(EParkourType::Normal, data))
+	{
+		DoParkour_Obstacle(EParkourType::Normal, data);
+		return;
+	}
+
+	if (Check_ObstacleMode(EParkourType::Short, data))
+	{
+		DoParkour_Obstacle(EParkourType::Short, data);
+		return;
+	}
+
+	if (Check_ObstacleMode(EParkourType::Wall, data))
+	{
+		DoParkour_Obstacle(EParkourType::Wall, data);
+		return;
+	}
+}
+
+void UParkourComponent::EndDoParkour()
+{
+	switch (Type)
+	{
+	case EParkourType::Climb: EndParkour_Climb(); break;
+	case EParkourType::Fall: break;
+	case EParkourType::Slide: EndParkour_Slide(); break;
+	case EParkourType::Short: EndParkour_Obstacle(); break;
+	case EParkourType::Normal: EndParkour_Obstacle(); break;
+	case EParkourType::Wall: EndParkour_Obstacle(); break;
+	}
+
+	Type = EParkourType::Max;
+}

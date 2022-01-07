@@ -79,6 +79,25 @@ private :
 	void CheckTarce_LeftAndRight();
 	void CheckTarce_Land();
 
+	bool Check_Obstacle();
+	
+	bool Check_ClimbMode();
+	void DoParkour_Climb();
+	void EndParkour_Climb();
+
+	bool Check_SlideMode();
+	void DoParkour_Slide();
+	void EndParkour_Slide();
+
+	bool Check_ObstacleMode(EParkourType InType, FParkourData& OutData);
+	void DoParkour_Obstacle(EParkourType InType, const FParkourData& OutData);
+	void EndParkour_Obstacle();
+
+
+public :
+	void DoParkour();
+	void EndDoParkour();
+
 private:
 	class ACharacter* OwnerCharacter;
 
@@ -91,4 +110,10 @@ private:
 	AActor* HitObstacle;
 	FVector HitObstacleExtent;
 	float   HitDistance;
+
+	EParkourType Type = EParkourType::Max;
+
+	FVector Normal;
+	FVector Forward;
+	float Dot;
 };
