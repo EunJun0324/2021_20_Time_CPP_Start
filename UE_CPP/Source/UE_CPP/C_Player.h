@@ -37,6 +37,9 @@ private :
 	UPROPERTY(VisibleDefaultsOnly)
 		class UArrowComponent* Arrows[(int32)EParkourArrowType::Max];
 
+	UPROPERTY(VisibleDefaultsOnly)
+		class UFeetComponent* Feet;
+
 private :
 	class AC_Rifle* Rifle;
 	class UC_UserWidget* AutoFire;
@@ -50,6 +53,7 @@ protected:
 public:	
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void Landed(const FHitResult& Hit);
 
 private :
 	void OnMoveForward(float AxisValue);

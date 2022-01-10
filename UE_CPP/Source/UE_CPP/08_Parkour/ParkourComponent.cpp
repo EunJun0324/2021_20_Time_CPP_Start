@@ -137,9 +137,9 @@ void UParkourComponent::CheckTarce_LeftAndRight()
 
 void UParkourComponent::CheckTarce_Land()
 {
-	if (OwnerCharacter->GetCharacterMovement()->IsFalling()) return;
+	if (!(OwnerCharacter->GetCharacterMovement()->IsFalling())) return;
 	if (bStartFall) return;
-
+	
 	bStartFall = true;
 
 	UArrowComponent* arrow = Arrows[(int32)EParkourArrowType::Land];
@@ -290,7 +290,9 @@ void UParkourComponent::DoParkour_Fall()
 }
 
 void UParkourComponent::EndParkour_Fall()
-{ Type = EParkourType::Max; }
+{ 
+	Type = EParkourType::Max; 
+}
 
 bool UParkourComponent::Check_ObstacleMode(EParkourType InType, FParkourData& OutData)
 {
@@ -352,7 +354,6 @@ void UParkourComponent::DoParkour()
 	}
 
 	if (HitResults[(int32)EParkourArrowType::Ceil].bBlockingHit) return;
-
 
 	FParkourData data;
 

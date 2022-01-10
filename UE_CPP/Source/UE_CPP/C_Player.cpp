@@ -16,6 +16,7 @@
 #include "07_TPS/C_Rifle.h"
 #include "07_TPS/C_UserWidget.h"
 #include "08_Parkour/ParkourComponent.h"
+#include "09_IK/FeetComponent.h"
 
 
 AC_Player::AC_Player()
@@ -83,6 +84,8 @@ AC_Player::AC_Player()
 			break;
 		}
 	}
+
+	CHelpers::CreateActorComponent<UFeetComponent>(this, &Feet, "Feet");
 }
 
 void AC_Player::BeginPlay()
@@ -119,6 +122,13 @@ void AC_Player::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Fire",      EInputEvent::IE_Released, this, &AC_Player::OffFire);
 	PlayerInputComponent->BindAction("AutoFire",  EInputEvent::IE_Pressed,  this, &AC_Player::OnAutoFire);
 	PlayerInputComponent->BindAction("Parkour",   EInputEvent::IE_Pressed,  this, &AC_Player::OnParkour);
+}
+
+void AC_Player::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
+
+	Parkour->DoParkour();
 }
 
 void AC_Player::OnMoveForward(float AxisValue)
