@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "09_IK/FeetComponent.h"
 #include "C_AnimInstance.generated.h"
 
 UCLASS()
@@ -24,6 +25,12 @@ protected :
 
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Animation")
 		float Pitch;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Animation")
+		bool bFeet;
+
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Animation")
+		FFeetData FeetData;
 
 public :
 	virtual void NativeBeginPlay()                         override;

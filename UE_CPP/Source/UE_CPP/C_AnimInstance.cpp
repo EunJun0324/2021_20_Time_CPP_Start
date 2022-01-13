@@ -29,4 +29,12 @@ void UC_AnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	}
 
 	Pitch = OwnerCharacter->GetBaseAimRotation().Pitch;
+
+	UFeetComponent* feet = CHelpers::GetComponent<UFeetComponent>(OwnerCharacter);
+
+	if (feet)
+	{
+		bFeet = true;
+		FeetData = feet->GetData();
+	}
 }
